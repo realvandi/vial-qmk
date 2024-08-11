@@ -29,6 +29,8 @@ enum layer_number {
 #define RAISE MO(_RAISE)
 #define LOWER MO(_LOWER)
 
+const unsigned char macOsMissionCtrlHex = (unsigned char)0xC1;
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* QWERTY
@@ -46,12 +48,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                   `-------------------''-------'           '------''--------------------'
  */
 
+
  [_QWERTY] = LAYOUT(
-  KC_ESC,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                     KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_GRV,
+  KC_ESC,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                     KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC,
   KC_TAB,   KC_Q,   KC_W,    KC_E,    KC_R,    KC_T,                     KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_MINS,
-  KC_LCTL, KC_A,   KC_S,    KC_D,    KC_F,    KC_G,                     KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
+  KC_CAPS, KC_A,   KC_S,    KC_D,    KC_F,    KC_G,                     KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
   KC_LSFT,  KC_Z,   KC_X,    KC_C,    KC_V,    KC_B, KC_LBRC,  KC_RBRC,  KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,  KC_RSFT,
-                      LOWER, KC_LGUI,  KC_LALT, KC_SPC,   KC_ENT,   KC_BSPC,  KC_RGUI, RAISE
+                      KC_LCTL, KC_LGUI,  KC_LALT,    KC_ENT,   KC_SPC,   LOWER,  RAISE, KC_ENT
 ),
 /* LOWER
  * ,-----------------------------------------.                    ,-----------------------------------------.
@@ -68,11 +71,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                   `-------------------''-------'           '------''--------------------'
  */
 [_LOWER] = LAYOUT(
-  _______, _______, _______, _______, _______, _______,                   _______, _______, _______,_______, _______, _______,
-  _______, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                   KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, _______,
-  _______, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                      KC_6,    KC_7,    KC_8,    KC_9,    KC_0, _______,
-  _______, _______, _______, _______, _______, _______, _______, _______, KC_PIPE, KC_GRAVE, KC_PLUS, KC_LCBR, KC_RCBR, _______,
-                             _______, _______, _______, _______, _______,  _______, _______, _______
+  KC_GRV, KC_F1     , KC_F2, KC_F3, KC_F4, KC_F5,                   KC_F6, KC_F7, KC_F8,KC_F9, KC_F10, KC_BSPC,
+  _______, _______, KC_UP,   _______, _______,  _______,                   _______,_______, _______, _______, _______, KC_EQUAL,
+  _______, KC_LEFT,    KC_DOWN,    KC_RIGHT,    _______,    _______,                      KC_LEFT,    KC_DOWN,    KC_UP,    KC_RIGHT, _______, KC_BSLS,
+  KC_LSFT, _______, _______, _______, _______, _______, KC_F11, KC_F12, _______, _______, _______, _______, _______, KC_ENT,
+                             _______, _______, _______, KC_ENT, KC_SPC,  _______, _______, KC_ENT
 ),
 /* RAISE
  * ,-----------------------------------------.                    ,-----------------------------------------.
@@ -89,11 +92,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                   `-------------------''-------'           '------''--------------------'
  */
 
+
+
 [_RAISE] = LAYOUT(
-  _______, _______, _______, _______, _______, _______,                     _______, _______, _______, _______, _______, _______,
-  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,                       KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,
-  _______, _______, _______, _______, _______, _______,                     XXXXXXX, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, XXXXXXX,
-  _______, _______, _______, _______, _______, _______,   _______, _______, KC_PLUS, KC_EQL,  KC_LBRC, KC_RBRC, KC_BSLS, _______,
+  _______, KC_BRMD, KC_BRMU, UC(macOsMissionCtrlHex), KC_WSCH, _______,                     KC_CAPS, KC_MRWD, KC_MPLY, KC_MFFD, KC_MUTE, _______,
+  _______, _______, _______ , _______, _______, _______,                    _______,   KC_BTN1,   KC_MS_U,   KC_BTN2,  KC_WH_U,  _______,
+  _______, _______, _______, _______, _______, _______,                     _______, KC_MS_L, KC_MS_D, KC_MS_R,   KC_WH_D, _______,
+  _______, _______, _______, _______, _______, _______,   KC_VOLD, KC_VOLU,  _______,  _______,   _______,  _______,  _______, _______,
                              _______, _______, _______,  _______, _______,  _______, _______, _______
 ),
 
@@ -118,7 +123,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                              _______, _______, _______, _______, _______,  _______, _______, _______
   ),
-/* MO(4) 
+/* MO(4)
  * ,-----------------------------------------.                    ,-----------------------------------------.
  * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
@@ -139,7 +144,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                              _______, _______, _______, _______, _______,  _______, _______, _______
   ),
-/* MO(5) 
+/* MO(5)
  * ,-----------------------------------------.                    ,-----------------------------------------.
  * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
@@ -176,7 +181,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 }
 
 static void render_logo(void) {
-	
+
     static const char PROGMEM logo[] = {
         0x80, 0x81, 0x82, 0x83, 0x84, 0x85, 0x86, 0x87, 0x88, 0x89, 0x8A, 0x8B, 0x8C, 0x8D, 0x8E, 0x8F, 0x90, 0x91, 0x92, 0x93, 0x94,
         0xA0, 0xA1, 0xA2, 0xA3, 0xA4, 0xA5, 0xA6, 0xA7, 0xA8, 0xA9, 0xAA, 0xAB, 0xAC, 0xAD, 0xAE, 0xAF, 0xB0, 0xB1, 0xB2, 0xB3, 0xB4,
@@ -255,6 +260,7 @@ static void render_status(void) {
     }
 
     oled_write_P(PSTR("  "), false);
+    oled_write_P(PSTR("SDX"), false);
     sprintf(wpm, "%03d", get_current_wpm());
     oled_write(wpm, false);
     oled_write_P(PSTR(" wpm\n"), false);
@@ -270,4 +276,3 @@ bool oled_task_user(void) {
 }
 
 #endif // OLED_ENABLE
-
