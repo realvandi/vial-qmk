@@ -180,7 +180,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     return state;
 }
 
-#define FRAME_DURATION 333
+#define FRAME_DURATION 130
 
 uint32_t timer = 0;
 uint8_t current_frame = 0;
