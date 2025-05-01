@@ -14,6 +14,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/**
+ *
+ * DYLAN'S NOTES: You did change the keymap of this file. Yes you did. Here's your workflow: you changed some of the most basic keymaps here to be compatible with your(current) workflow in MacOS. e.g. Your Lily58 keyboard currently has both the "home" location of the thumbs set to both spacebar. Apart from that, your "RAISE" layer is also currently set to do MacOS stuff. BUT, your main purpose of this file is just to get VIA going. You can safely flash your keyboard using this keymap, and it'll be fine. The other main priority of this file was to make the custom graphics work out with your keyboard's LCD screen. Use this to flash to a "usable", stable state on MacOS, and if you need to do any sort of changes to keybindings, just use via. usevia.app.
+ *
+ */
+
 #include QMK_KEYBOARD_H
 #include <stdio.h>
 
